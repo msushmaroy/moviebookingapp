@@ -1,0 +1,34 @@
+<app-home></app-home>
+<div class="container my-div">
+    <h2 style="color: blue; text-align: center;">Search A Movie</h2> <br>
+    <div class="col-xxl-7">
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+            <label for="movieName">Movie Name:</label>
+            <input class="form-control me-2" type="text" placeholder="Enter a Movie Name " formControlName="movieName" [(ngModel)]="movieName" min=1 required>
+            <button [disabled]="searchForm.invalid" style="margin-top: 2%;" class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<div class="container-lg" *ngIf = "movies.length === 1">
+  <div class="row movie-div my-div" *ngFor="let movie of movies">
+      <div class="col-xxl-2">
+          <img src="{{getMovieImagePath(movie.movieName)}}" alt="movie.movieName">
+      </div>
+      <div class="col-xxl-3">
+        <h1 class="movie-details">
+          <img src="../../../assets/images/movies/movie-icon.png" alt="movie icon">
+          {{movie.movieName}}</h1> <br>
+        <p class="movie-details" style="padding-left: 2px;">
+          <img src="../../../assets/images/movies/theatre-icon.png" alt="">
+          <b>{{movie.theatreName}}</b></p><br>
+        <p class="movie-details">
+          <img src="../../../assets/images/movies/tickets-icon.png" alt="">
+          {{movie.noOfTicketsAvailable}}</p><br>
+        <p class="movie-details" [ngClass]="movie.ticketsStatus === 'BOOK ASAP' ? 'movie-status-bookasap':'movie-status-soldout'">{{movie.ticketsStatus}}</p><br>
+        <button class="btn btn-primary" *ngIf="isLoggedAsUser()" (click)="booktickets(movie.movieName,movie.theatreName)">Book Now</button>
+    </div>
+  </div>
+</div>
+<div class="container my-div" *ngIf = "errorMes === 'Movies Not Found'" >
+  <h1>{{message}}</h1>
+</div>

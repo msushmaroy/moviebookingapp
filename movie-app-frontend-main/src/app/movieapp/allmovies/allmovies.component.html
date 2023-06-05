@@ -1,0 +1,97 @@
+<app-home></app-home>
+<!-- <div class="movie-list">
+    <div *ngFor="let movie of movieList" class="movie-card">
+      <div class="movie-image">
+        <img src="{{getMovieImagePath(movie.movieName)}}" alt="{{movie.movieName}}">
+      </div>
+      <div class="movie-details">
+        <h3>{{movie.movieName}}</h3>
+        <p>{{movie.theatreName}}</p>
+        <p>{{movie.noOfTicketsAvailable}}</p>
+        <p>{{movie.ticketsStatus}}</p>
+        <button class="btn btn-primary" *ngIf="isLoggedAsUser()">Book Now</button>
+      </div>
+    </div>
+  </div> -->
+<!-- <div class="container">
+    <div class="col-md-7">
+      <div *ngFor="let movie of movieList">
+        <div>
+          <img src="{{getMovieImagePath(movie.movieName)}}" alt="{{movie.movieName}}" style="float: left;">
+        </div>
+        <div style="padding: 10%;">
+          <h3 class="movie-details">{{movie.movieName}}</h3>
+          <p class="movie-details">{{movie.theatreName}}</p>
+          <p class="movie-details">{{movie.noOfTicketsAvailable}}</p>
+          <p class="movie-details">{{movie.ticketsStatus}}</p>
+          <button class="btn btn-primary" *ngIf="isLoggedAsUser()">Book Now</button>
+        </div>
+        <hr style="clear:both;">
+      </div>
+    </div>
+  </div> -->
+<!-- <div class="container">
+  <div class="movies">
+    <div class="img-div">
+      <img src="../../../assets/images/movies/Dasara.jpg" alt="">
+    </div>
+    <h2 class="movie-data">Movie Name</h2>
+    <h5 class="movie-data">Threatre Name</h5>
+    <h5 class="movie-data">Available Tickets</h5>
+    <h5 class="movie-data">Status</h5>
+    <button class="btn btn-primary footer">Book Now</button>
+  </div>
+</div> -->
+<!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner" *ngFor="let movie of movieList">
+    <div class="carousel-item active">
+      <img src="{{getMovieImagePath(movie.movieName)}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2>{{movie.movieName}}</h2>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
+<div class="container-lg">
+  <div class="row movie-div my-div" *ngFor="let movie of movieList">
+    <div class="col-xxl-3">
+      <img src="{{getMovieImagePath(movie.movieName)}}" style="padding-left: 35% ;" alt="movie.movieName">
+    </div>
+    <div class="col-xxl-6">
+          <h1 class="movie-details">
+            <img src="../../../assets/images/movies/movie-icon.png" alt="movie icon">
+            {{movie.movieName}}</h1> <br>
+          <p class="movie-details" style="padding-left: 2px;">
+            <img src="../../../assets/images/movies/theatre-icon.png" alt="">
+            <b>{{movie.theatreName}}</b></p><br>
+          <p class="movie-details">
+            <img src="../../../assets/images/movies/tickets-icon.png" alt="">
+            {{movie.noOfTicketsAvailable}}</p><br>
+          <p class="movie-details" [ngClass]="movie.ticketsStatus === 'BOOK ASAP' ? 'movie-status-bookasap':'movie-status-soldout'">{{movie.ticketsStatus}}</p><br>
+          <button class="btn btn-primary" *ngIf="isLoggedAsUser()" [disabled]="movie.ticketsStatus === 'SOLD OUT'" (click)="booktickets(movie.movieName,movie.theatreName)">Book Now</button>
+    </div>
+  </div>
+</div>
+<!-- getMovieImagePath(movieName: string){
+  switch(movieName){
+    case 'Dasara': return '../../../assets/images/movies/DasaraLargeSize.webp';
+    case 'Balagam': return '../../../assets/images/movies/BalagamHighRes.jpg';
+    case 'Bhoola': return '../../../assets/images/movies/BhoolaLargeSize.jpg';
+    case 'Vidudhala': return '../../../assets/images/movies/vidudhalaHighRes.avif';
+    case 'Pathaan': return '../../../assets/images/movies/pathaanHighRes.avif';
+    default: return '';
+  }
+} -->

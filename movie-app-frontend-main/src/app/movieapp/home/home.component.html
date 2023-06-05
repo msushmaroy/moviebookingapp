@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" routerLink="/home">
+      <img src="../../../assets/images/favicon-32x32.png" alt="" routerLink="/home" style="padding-left: 1%;">Movie
+      Booking App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/home"
+            *ngIf="getStatusForLogout()">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/bookticket" *ngIf="isLoggedInAsUser()">Book Tickets</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLink="/searchmovie" *ngIf="!loggedInAsGuest">Search Movie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/resetpassword" *ngIf="getStatusForLogout()">Reset Password</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="getUserStatus()">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin Options
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#" routerLink="/bookings">Bookings</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#" routerLink="/updatestatus">Update Status</a></li>
+            <li><a class="dropdown-item" href="#" routerLink="/deletemovie">Delete Movie</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="btn btn-outline-light" type="submit" *ngIf="getStatusForLogout()" (click)="logout()">Log
+        Out</button>
+      <button class="btn btn-outline-light" type="submit" *ngIf="loggedInAsGuest" (click)="loginForGuest()">Register
+        Now</button>
+    </div>
+  </div>
+</nav>

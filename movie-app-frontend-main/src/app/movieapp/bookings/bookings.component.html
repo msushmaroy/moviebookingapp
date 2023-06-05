@@ -1,0 +1,45 @@
+<app-home></app-home>
+<div class="container">
+    <div class="col-md-12 my-div">
+        <form #f="ngForm" (ngSubmit)="getAllTickets()">
+            <h2 style="color: blue;">Get Bookings for Movie</h2>
+            <div class="mb-3">
+                <label for="movieName" class="form-label">Movie Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="movieName" placeholder="Enter movie name"
+                    [(ngModel)]="movieName">
+            </div>
+            <button type="submit" [disabled]="movieName.length===0" class="btn btn-primary">Get Bookings</button>
+        </form>
+    </div>
+</div>
+<div class="container" *ngIf="isFormSubmit">
+    <div class="col-12 my-div">
+        <ng-container *ngIf="allTickets.length === 0; then noTicketsDiv; else allTicketsDiv">
+        </ng-container>
+        <ng-template #noTicketsDiv>
+            <h2>No Bookings found</h2>
+          </ng-template>
+          <ng-template #allTicketsDiv>
+            <div class="card" #elseDiv>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <td class="table-heading">Login Id</td>
+                            <td class="table-heading">Movie Name</td>
+                            <td class="table-heading">Theatre Name</td>
+                            <td class="table-heading">Tickets Booked</td>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ticket of allTickets">
+                                <td>{{ticket.loginId}}</td>
+                                <td>{{ticket.movieName}}</td>
+                                <td>{{ticket.theatreName}}</td>
+                                <td>{{ticket.noOfTickets}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </ng-template>
+    </div>
+</div>

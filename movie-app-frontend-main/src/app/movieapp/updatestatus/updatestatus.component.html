@@ -1,0 +1,38 @@
+<app-home></app-home>
+<div class="container">
+    <div class="col-md-12 my-div">
+        <div>
+            <h2 style="color: blue;">Update or Add a Movie</h2>
+            <form (ngSubmit)="onUpdate()" #l="ngForm">
+                <div class="form-group">
+                    <label for="loginId">Moive Name</label>
+                    <input type="text" [(ngModel)]="movie.movieName" name="movieName" class="form-control"
+                        placeholder="Enter Movie Name" min = 1 required>
+                </div>
+                <div class="form-group">
+                    <label for="theatreName">Theatre Name</label>
+                    <input type="text" [(ngModel)]="movie.theatreName" name="theatreName" class="form-control"
+                        placeholder="Enter Theatre Name" min = 1 required>
+                </div>
+                <div class="form-group">
+                    <label for="noOfTickets">Number Of Tickets Available</label>
+                    <input type="number" [(ngModel)]="movie.noOfTicketsAvailable" name="noOfTicketsAvailable"
+                        class="form-control" placeholder="Enter Number Of Tickets Available" required>
+                </div>
+                <div class="form-group" style="margin: 3px;">
+                    <label for="loginId">Ticket Status</label>
+                    <select [(ngModel)]="ticketsStatus" name="tickesStatus">
+                        <option value="SOLD OUT">SOLD OUT</option>
+                        <option value="BOOK ASAP">BOOK ASAP</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" [disabled]="!l.valid" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="messages.length>0">
+    <div class="col-12 my-div">
+        <h2 style="color: green; text-align: center;">{{messages}}</h2>
+    </div>
+  </div>

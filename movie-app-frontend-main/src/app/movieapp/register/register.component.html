@@ -1,0 +1,183 @@
+<!-- <div class="register">
+<div class="registration">
+  <h1>Register</h1>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="loginId">Login ID:</label>
+      <input type="text" id="loginId" formControlName="loginId" class="form-control">
+      <div *ngIf="registrationForm.controls['loginId'].errors && (registrationForm.controls['loginId'].dirty || registrationForm.controls['loginId'].touched)" class="error-message">
+        <div *ngIf="registrationForm.controls['loginId'].errors['required']">Login ID is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" formControlName="firstName" class="form-control">
+      <div *ngIf="registrationForm.controls['firstName'].errors && (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)" class="error-message">
+        <div *ngIf="registrationForm.controls['firstName'].errors['required']">First name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" formControlName="lastName" class="form-control">
+      <div *ngIf="registrationForm.controls['lastName'].errors && (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)" class="error-message">
+        <div *ngIf="registrationForm.controls['lastName'].errors['required']">Last name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+      <div *ngIf="registrationForm.controls['email'].errors && (registrationForm.controls['email'].dirty || registrationForm.controls['email'].touched)" class="error-message">
+        <div *ngIf="registrationForm.controls['email'].errors['required']">Email is required.</div>
+        <div *ngIf="registrationForm.controls['email'].errors['email']">Invalid email.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="contactNumber">Contact Number:</label>
+      <input type="text" id="contactNumber" formControlName="contactNumber" class="form-control">
+      <div *ngIf="registrationForm.controls['contactNumber'].errors && (registrationForm.controls['contactNumber'].dirty || registrationForm.controls['contactNumber'].touched)" class="error-message">
+        <div *ngIf="registrationForm.controls['contactNumber'].errors['required']">Contact number is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+      <div *ngIf="registrationForm.controls['password'].errors && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)" class="error-message">
+        <div *ngIf="registrationForm.controls['password'].errors['required']">Password is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" required="">
+      <div *ngIf="registrationForm.controls['confirmPassword'].errors && (registrationForm.controls['confirmPassword'].dirty || registrationForm.controls['password'].touched)" class="error-message">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+  </div>
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/images/favicon-32x32.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Movie Booking App
+    </a>
+  </div>
+</nav>
+<div class="register">
+  <section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                <form (ngSubmit)="onSubmit()" [formGroup]="f">
+                  <div class="form-group form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Enter Login Id must be unique"
+                    [(ngModel)]="user.loginId"
+                    formControlName="loginId"
+                    required
+                    minlength="6"
+                    maxlength="12">
+                    <div *ngIf="!f.controls['loginId'].valid && (f.controls['loginId'].dirty || f.controls['loginId'].touched)">
+                      <div *ngIf="f.controls['loginId'].errors" class="err">
+                        loginId is required & minlength=6
+                      </div>
+                    </div>
+                    <!-- <label class="form-label" for="form3Example1cg">Your Name</label> -->
+                  </div>
+                  <div class="form-outline mb-4 form-group">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Your First Name" 
+                    [(ngModel)]="user.firstName"
+                    formControlName="firstName"
+                    required
+                    minlength="3"
+                    maxlength="12">
+                    <div *ngIf="!f.controls['firstName'].valid && (f.controls['firstName'].dirty || f.controls['firstName'].touched)">
+                      <div *ngIf="f.controls['firstName'].errors" class="err">
+                        firstName is required & minlength=3
+                      </div>
+                    </div>
+                    <!-- <label class="form-label" for="form3Example1cg">Your Name</label> -->
+                  </div>
+                  <div class="form-outline mb-4 form-group">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Your Last Name" 
+                    [(ngModel)]="user.lastName"
+                    formControlName="lastName"
+                    required=""
+                    minlength="3"
+                    maxlength="12">
+                    <div *ngIf="!f.controls['lastName'].valid && (f.controls['lastName'].dirty || f.controls['lastName'].touched)">
+                      <div *ngIf="f.controls['lastName'].errors" class="err">
+                        lastName is required & minlength=3
+                      </div>
+                    </div>
+                    <!-- <label class="form-label" for="form3Example1cg">Your Name</label> -->
+                  </div>
+
+                  <div class="form-outline mb-4 form-group">
+                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Your Email"
+                    [(ngModel)]="user.email"
+                    formControlName="email"
+                    email
+                    required=""
+                    minlength="6"
+                    maxlength="30"/>
+                    <div *ngIf="!f.controls['email'].valid && (f.controls['email'].dirty || f.controls['email'].touched)">
+                      <div *ngIf="f.controls['email'].errors" class="err">
+                        email is required & minlength=6
+                      </div>
+                    </div>
+                    <!-- <label class="form-label" for="form3Example3cg">Your Email</label> -->
+                  </div>
+                  <div class="form-outline mb-4 form-group">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Your Contact Number" 
+                    [(ngModel)]="contactNumber"
+                    formControlName="contactNumber"
+                    required
+                    minlength="10"
+                    maxlength="10"
+                    >
+                    <div *ngIf="!f.controls['contactNumber'].valid && (f.controls['contactNumber'].dirty || f.controls['contactNumber'].touched)">
+                      <div *ngIf="f.controls['contactNumber'].errors" class="err">
+                        contactNumber is required & length must be 10 digits
+                      </div>
+                    </div>
+                    <!-- <label class="form-label" for="form3Example1cg">Your Name</label> -->
+                  </div>
+
+                  <div class="form-outline mb-4 form-group">
+                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Password"
+                    [(ngModel)]="user.password"
+                    formControlName="password"
+                    required=""
+                    minlength="6"
+                    maxlength="12"/>
+                    <div *ngIf="!f.controls['password'].valid && (f.controls['password'].dirty || f.controls['password'].touched)">
+                      <div *ngIf="f.controls['password'].errors" class="err">
+                        password is required & minlength=6
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="message.length>0">
+                    {{message}}
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit"
+                      class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" [disabled]="!f.valid">Register</button>
+                  </div>
+
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#" routerLink="/login"
+                      class="fw-bold text-body"><u>Login here</u></a></p>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

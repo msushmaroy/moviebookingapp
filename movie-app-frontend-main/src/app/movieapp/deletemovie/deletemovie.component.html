@@ -1,0 +1,18 @@
+<app-home></app-home>
+<div class="container">
+  <div class="col-md-12 my-div">
+    <form #f="ngForm" (ngSubmit)="deleteMovie()">
+      <h2 style="color: blue;">Delete A Movie Here</h2>
+      <div class="mb-3">
+        <label for="movieName" class="form-label">Movie Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="enter movie name to delete" name="movieName" [(ngModel)]="movieName">
+      </div>
+      <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+  </div>
+</div>
+<div class="container" *ngIf="message.length>0">
+  <div class="col-12 my-div">
+      <h2 style="color: green; text-align: center;">{{message}}</h2>
+  </div>
+</div>
